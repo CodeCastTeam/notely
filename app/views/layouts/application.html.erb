@@ -10,6 +10,24 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <!-- <a href="/">Home</a> -->
+      <%# the line below 👇 generates the line above 👆 %>
+      <div class="row">
+        <div class="col">
+          <%= link_to("Home", root_path) %>
+        </div>
+        <div class="col text-right">
+          <% if user_sign_in? %>
+            Hello <%= current_user.first_name %>
+            <%= link_to "Sign out", sign_out_path, method: :delete %>
+          <% end %>
+        </div>
+      </div>
+      
+
+      <hr>
+      <%= yield %>
+    </div>
   </body>
 </html>
