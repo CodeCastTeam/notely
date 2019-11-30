@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # when we receive an HTTP `GET` request to a URL `/`
+  # then handle it with `pages` controller
+  # and use the `index` action (method)
+  get '/', to: 'pages#index'
 end
