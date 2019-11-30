@@ -22,4 +22,9 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     uniqueness: true,
                     format: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
+                   
+  # the dependent: :destroy option says that if we delete a user
+  # record, go ahead and delete all associated notes
+  has_many :notes, dependent: :destroy
 end

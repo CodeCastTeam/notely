@@ -11,6 +11,7 @@
 
   <body>
     <div class="container">
+
       <!-- <a href="/">Home</a> -->
       <%# the line below 👇 generates the line above 👆 %>
       <div class="row">
@@ -18,15 +19,28 @@
           <%= link_to("Home", root_path) %>
         </div>
         <div class="col text-right">
-          <% if user_sign_in? %>
-            Hello <%= current_user.first_name %>
+          <% if user_signed_in? %>
+            Hello <%= current_user.first_name %> |
+            <%= link_to "New Note", new_note_path %>
+            |
+            <%= link_to "Your Notes", notes_path %>
+            |
             <%= link_to "Sign out", sign_out_path, method: :delete %>
           <% end %>
         </div>
       </div>
-      
-
       <hr>
+      
+      <% if flash[:notice] %>
+        <div class="alert alert-success" role="alert">
+          <%= flash[:notice] %>
+        </div>
+      <% elsif flash[:alert] %>
+        <div class="alert alert-danger" role="alert">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </div>
   </body>

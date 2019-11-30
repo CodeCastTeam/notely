@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col">
+    <h1><%= @note.title %></h1>
+  </div>
+  <div class="col">
+    <% @note.tags.each do |tag| %>
+      <code>#<%= tag.name %></code>
+    <% end %>
+  </div>
+  <div class="col text-right">
+    <%= link_to 'Edit', edit_note_path(@note), class: 'btn btn-info' %>
+    <%= link_to 'Delete', note_path(@note), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>
+
+
+<p><%= @note.body_html.html_safe %></p>

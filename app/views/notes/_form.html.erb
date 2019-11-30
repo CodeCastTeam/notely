@@ -1,0 +1,23 @@
+<% if @note.errors.any? %>
+  <ul>
+    <% @note.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @note do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :body_md, 'Body Markdown' %>
+    <%= f.text_area :body_md, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tag_list %>
+    <%= f.text_field :tag_list, class: "form-control" %>
+  </div>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

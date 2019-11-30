@@ -1,0 +1,7 @@
+<h1>Your Notes</h1>
+
+<% @notes.each do |note| %>
+  <%= link_to note.title, note_path(note) %>
+  <%= note.body_md.truncate(200) %>
+  <hr>
+<% end %>

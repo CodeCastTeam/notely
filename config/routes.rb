@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   # the line above generates routes to all the standard 7 actions in Rails
   # unless you restrict it with `except` or `only`
 
+  resources :notes
+
   get "/sign_in", to: "sessions#new"
   post "/sign_in", to: "sessions#create"
   delete "/sign_out", to: "sessions#destroy"
